@@ -3,9 +3,10 @@
     name: "Homework Assignment"
     description: "Ansible Boot Camp Homework"
     organization: Default
+    scm_update_on_launch: true
     state: present
 
-- name: Machine Credentail to connect to workstation using openstack.pub
+- name: Machine Credential to connect to workstation using openstack.pub
   tower_credential:
     name: Connect_to_workstation
     organization: Default
