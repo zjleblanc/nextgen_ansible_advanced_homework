@@ -36,7 +36,7 @@
   tower_host:
     name: localhost
     inventory: "{{ ec2_dynamic_inventory }}"
-    variables: @/root/inventory_vars.json
+    variables: "@/root/inventory_vars.json"
 
 - name: Create inventory source with ec2 script
   tower_inventory_source:
