@@ -15,6 +15,7 @@
     name: "{{ proj_name }}"
     description: "Ansible Boot Camp Homework"
     organization: "{{ org_name }}"
+    scm_url: "{{ scm_url }}"
     scm_type: git
     scm_credential: homework_repo
     scm_branch: "{{ scm_branch }}"
