@@ -21,7 +21,7 @@
     - tag_AnsibleGroup_appdbs
 
 - name: Associate AWS tags to parent
-  tower_group:
+  awx.awx.tower_group:
     name: "{{ item }}"
     children: 
       - "tag_AnsibleGroup_{{ item }}"
