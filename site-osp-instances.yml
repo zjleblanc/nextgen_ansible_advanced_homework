@@ -1,11 +1,4 @@
-- hosts: localhost
-  tasks:
-  - name: Create workstation inventory
-    add_host:
-       name: "workstation-{{ lookup('env', 'OSP_GUID') }}.rhpds.opentlc.com"
-       group: workstation
-
-- hosts: workstation
+- hosts: isolated_group_osp
   become: yes
   gather_facts: true
   roles:
