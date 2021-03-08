@@ -10,7 +10,7 @@
     security_groups: "{{ item.security_group }}"
     delete_fip: yes
     wait: no
-    meta: "{{ item.meta }}"
+    meta: "{{ item.meta | to_json }}"
     userdata: |
       #!/bin/bash
       echo "{{ openstack_key }}" >> /home/cloud-user/.ssh/authorized_keys
