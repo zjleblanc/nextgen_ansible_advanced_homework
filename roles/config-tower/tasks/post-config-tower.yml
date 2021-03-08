@@ -1,8 +1,23 @@
+- name: Machine Credential to connect to git repo
+  tower_credential:
+    name: Connect_to_git
+    organization: Default
+    state: present
+    kind: ssh
+    tower_host: tower1.{{tower_GUID}}.example.opentlc.com
+    tower_username: admin
+    tower_password: r3dh4t1!
+    ssh_key_data: "/root/.ssh/5bc4key.pem"
+    username: opentlc-mgrs
+
 - name: Create Homework Assignment project
   tower_project:
     name: "Homework Assignment"
     description: "Ansible Boot Camp Homework"
     organization: Default
+    scm_url: git@github.com:zjleblanc/nextgen_ansible_advanced_homework.git
+    scm_type: git
+    scm_branch: master
     scm_update_on_launch: true
     state: present
 
