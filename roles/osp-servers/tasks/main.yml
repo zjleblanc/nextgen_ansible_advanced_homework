@@ -11,6 +11,8 @@
     delete_fip: yes
     wait: no
     meta: "{{ item.meta }}"
+    nics:
+      - net-name: int_network
     userdata: |
       #!/bin/bash
       echo "{{ openstack_key }}" >> /home/cloud-user/.ssh/authorized_keys

@@ -1,5 +1,5 @@
 - hosts: isolated_group_osp
   become: yes
-  gather_facts: true
+  gather_facts: false
   roles:
    - osp-servers
