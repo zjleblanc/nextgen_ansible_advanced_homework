@@ -1,10 +1,4 @@
 ---
-
-# tasks file for osp.servers
-- debug:
-    var: item
-  loop: "{{ osp_servers | dict2items | json_query('[].value') }}"
-
 - name: Create Instances
   os_server:
     cloud: openstack
