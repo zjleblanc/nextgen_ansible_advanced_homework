@@ -1,4 +1,4 @@
-- hosts: isolated_group_osp
+- hosts: workstation
   become: yes
   gather_facts: false
   roles:
