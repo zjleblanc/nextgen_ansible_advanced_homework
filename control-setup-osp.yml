@@ -26,9 +26,9 @@
           pip:
             name: "{{ _pip_packages }}"
             state: latest
-            executable: hw/bin/pip3
-          tags:
-            - install-pip-packages
+            executable: "{{ playbook_dir }}/hw/bin/pip3"
+            tags:
+              - install-pip-packages
 
         - name: Create /etc/openstack directory
           file:
