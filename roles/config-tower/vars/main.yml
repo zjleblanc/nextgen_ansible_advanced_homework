@@ -1,5 +1,6 @@
 ---
 # vars file for roles/config-tower
+tower_cfg: ~/.tower_cli.cfg
 org_name: Default 
 scm_branch: master 
 scm_url: "{{ github_repo }}"
@@ -9,6 +10,7 @@ password: r3dh4t1!
 ssh_cred_name: "Connect_to_workstation"
 user_cred_name: "cloud-user"
 user_cred_path: "/root/.ssh/openstack.pem"
+opentlc_cred_path: "/root/.ssh/mykey.pem"
 static_inventory_name: scm_inventory
 instance_group_name: osp
 workflow_template_name: cicd_workflow

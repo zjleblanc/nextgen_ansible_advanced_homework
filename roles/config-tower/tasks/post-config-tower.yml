@@ -1,47 +1,48 @@
 - name: Machine Credential to connect to git repo
   tower_credential:
     name: homework_repo
-    organization: Default
+    organization: "{{ org_name }}"
     state: present
     kind: scm
     tower_host: tower1.{{tower_GUID}}.example.opentlc.com
-    tower_username: admin
-    tower_password: r3dh4t1!
+    tower_username: "{{ user_name }}"
+    tower_password: "{{ password }}"
     ssh_key_data: "{{ lookup('file', '/root/.ssh/5bc4key.pem') }}"
     username: opentlc-mgrs
 
 - name: Create Homework Assignment project
   tower_project:
-    name: "Homework Assignment"
+    name: "{{ proj_name }}"
     description: "Ansible Boot Camp Homework"
-    organization: Default
-    scm_url: git@github.com:zjleblanc/nextgen_ansible_advanced_homework.git
+    organization: "{{ org_name }}"
     scm_type: git
     scm_credential: homework_repo
-    scm_branch: master
+    scm_branch: "{{ scm_branch }}"
     scm_update_on_launch: true
     state: present
 
 - name: Machine Credential to connect to workstation using openstack.pub
   tower_credential:
-    name: Connect_to_workstation
-    organization: Default
+    name: "{{ ssh_cred_name }}"
+    organization: "{{ org_name }}"
     state: present
     kind: ssh
-    tower_host: tower1.{{tower_GUID}}.example.opentlc.com
-    tower_username: admin
-    tower_password: r3dh4t1!
-    ssh_key_data: "/root/.ssh/openstack.pem"
-    username: cloud-user
+    tower_host: tower1.{{ tower_GUID }}.example.opentlc.com
+    tower_username: "{{ username }}"
+    tower_password: "{{ password }}"
+    ssh_key_data: "{{ user_cred_path }}"
+    username: "{{ user_cred_name }}"
 
 - name: Create Inventory
   command: |
     tower-cli inventory create -n "{{static_inventory_name}}" --organization "{{org_name}}"
 
 - name: Create Group in static inventory 
-  command: |
-    tower-cli group create --inventory "{{static_inventory_name}}"  --name {{group_name}}
-
+  tower_inventory:
+    name: "{{group_name}}"
+    inventory: "{{static_inventory_name}}"
+    state: present
+    tower_config_file: "{{ tower_cfg }}"
 
 - name: Add tower host
   tower_host:
@@ -50,8 +51,8 @@
     inventory: "{{static_inventory_name}}"
     state: present
     tower_host: tower1.{{tower_GUID}}.example.opentlc.com
-    tower_username: admin
-    tower_password: r3dh4t1!
+    tower_username: "{{ user_name }}"
+    tower_password: "{{ password }}"
     tower_verify_ssl: no
 
 - name: Associate workstation host to group 
@@ -62,14 +63,14 @@
 - name: Tower Creds key file
   tower_credential:
     name: "{{ opentlc_cred_name }}"
-    organization: Default
+    organization: "{{ org_name }}"
     state: present
     kind: ssh
     tower_host: tower1.{{tower_GUID}}.example.opentlc.com
-    tower_username: admin
-    tower_password: r3dh4t1!
+    tower_username: "{{ user_name }}"
+    tower_password: "{{ password }}"
     tower_verify_ssl: no
-    ssh_key_data: "{{ lookup('file', '/root/.ssh/mykey.pem') }}"
+    ssh_key_data: "{{ lookup('file', opentlc_cred_path) }}"
     username: "{{ opentlc_login }}"
 
 - name: Remove secret
