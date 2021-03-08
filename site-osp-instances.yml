@@ -1,4 +1,4 @@
-- hosts: localhost
+- hosts: isolated_group_osp
   connection: local
   become: no
   gather_facts: true
