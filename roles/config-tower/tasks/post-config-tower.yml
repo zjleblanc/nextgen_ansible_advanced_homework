@@ -41,7 +41,7 @@
     state: present
 
 - name: Create Group in static inventory 
-  tower_inventory:
+  tower_group:
     name: "{{group_name}}"
     inventory: "{{static_inventory_name}}"
     state: present
