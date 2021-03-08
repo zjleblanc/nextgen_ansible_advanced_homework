@@ -1,8 +1,5 @@
 ---
 # vars file for osp.servers
-openstack_key: "{{ lookup('file', '/root/.ssh/openstack.pub') }}"
-dev_key: "{{ lookup('file', '/root/.ssh/mykey.pub') }}"
-
 osp_servers:
   frontend:
     name: frontend
