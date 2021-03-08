@@ -17,6 +17,7 @@
     organization: Default
     scm_url: git@github.com:zjleblanc/nextgen_ansible_advanced_homework.git
     scm_type: git
+    scm_credential: Connect_to_git
     scm_branch: master
     scm_update_on_launch: true
     state: present
