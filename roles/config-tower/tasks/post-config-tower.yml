@@ -1,5 +1,10 @@
 - name: Create Homework Assignment project
-
+  tower_project:
+    name: "Homework Assignment"
+    description: "Ansible Boot Camp Homework"
+    organization: Default
+    state: present
+    tower_config_file: "~/.tower_cli.cfg"
 
 - name: Machine Credentail to connect to workstation using openstack.pub
   tower_credential:
