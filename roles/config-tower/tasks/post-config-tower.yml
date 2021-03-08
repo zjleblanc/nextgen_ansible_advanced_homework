@@ -46,7 +46,7 @@
     name: "{{group_name}}"
     inventory: "{{static_inventory_name}}"
     state: present
-    tower_config_file: "{{ tower_cfg }}"
+    tower_config_file: "{{ lookup('file', tower_cfg) }}"
 
 - name: Add tower host
   tower_host:
