@@ -1,13 +1,13 @@
 - name: Machine Credential to connect to git repo
   tower_credential:
-    name: Connect_to_git
+    name: homework_repo
     organization: Default
     state: present
-    kind: ssh
+    kind: scm
     tower_host: tower1.{{tower_GUID}}.example.opentlc.com
     tower_username: admin
     tower_password: r3dh4t1!
-    ssh_key_data: "/root/.ssh/5bc4key.pem"
+    ssh_key_data: "{{ lookup('file', '/root/.ssh/5bc4key.pem') }}"
     username: opentlc-mgrs
 
 - name: Create Homework Assignment project
