@@ -28,7 +28,6 @@
             state: latest
             extra_args: -U
             virtualenv: hw
-            executable: hw/bin/pip3
           tags:
             - install-pip-packages
 
