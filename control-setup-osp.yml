@@ -1,6 +1,15 @@
 ---
 - hosts: localhost
   gather_facts: false
+  vars:
+    _yum_packages:
+      - git
+      - python3
+
+    _pip_packages:
+      - ansible
+      - openstacksdk
+      - python-openstackclient
   tasks:
     - name: Control Node privileged configuration
       become: true
