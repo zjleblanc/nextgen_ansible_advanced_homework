@@ -3,7 +3,7 @@
 # tasks file for osp.servers
 - debug:
     var: item
-  loop: "{{ osp_servers | dict2items | subelements('value') }}"
+  loop: "{{ osp_servers | dict2items | select('value') }}"
 
 - name: Create Instances
   os_server:
@@ -21,4 +21,4 @@
       #!/bin/bash
       echo "{{ openstack_key }}" >> /home/cloud-user/.ssh/authorized_keys
       echo "{{ dev_key }}" >> /home/cloud-user/.ssh/authorized_keys
-  loop: "{{ osp_servers | dict2items | subelements('value') | list }}"
+  loop: "{{ osp_servers | dict2items | select('value') | list }}"
