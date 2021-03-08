@@ -26,7 +26,6 @@
           pip:
             name: "{{ _pip_packages }}"
             state: latest
-            extra_args: -U
             virtualenv: hw
           tags:
             - install-pip-packages
