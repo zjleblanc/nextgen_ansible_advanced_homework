@@ -26,7 +26,7 @@
           pip:
             name: "{{ _pip_packages }}"
             state: latest
-            virtualenv: hw
+            executable: hw/bin/pip3
           tags:
             - install-pip-packages
 
