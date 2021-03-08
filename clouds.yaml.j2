@@ -1,6 +1,6 @@
 
 clouds:
-  {{ openstack_cloud | default(openstack) }}:
+  {{ openstack_cloud | default('openstack') }}:
     auth:
       auth_url: {{ openstack_auth_url | default('http://192.0.2.21:5000') }}
       username: {{ openstack_username | default('admin') }}
