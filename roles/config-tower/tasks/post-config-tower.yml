@@ -17,7 +17,7 @@
     organization: Default
     scm_url: git@github.com:zjleblanc/nextgen_ansible_advanced_homework.git
     scm_type: git
-    scm_credential: Connect_to_git
+    scm_credential: homework_repo
     scm_branch: master
     scm_update_on_launch: true
     state: present
@@ -69,7 +69,7 @@
     tower_username: admin
     tower_password: r3dh4t1!
     tower_verify_ssl: no
-    ssh_key_data: /root/.ssh/mykey.pem
+    ssh_key_data: "{{ lookup('file', '/root/.ssh/mykey.pem') }}"
     username: "{{ opentlc_login }}"
 
 - name: Remove secret
