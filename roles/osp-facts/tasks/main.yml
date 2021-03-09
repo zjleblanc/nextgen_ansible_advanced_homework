@@ -18,3 +18,8 @@
       #      ansible_ssh_private_key_file: ~/.ssh/openstack.pem
       #  ansible_ssh_user: cloud-user
      with_items: "{{result.openstack_servers}}"
+
+   - name: Output Condensed Facts
+     debug:
+      msg: "{{ item.name }}: {{ item.public_v4 }}"
+     with_items: "{{result.openstack_servers}}"
