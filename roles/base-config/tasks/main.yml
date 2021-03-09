@@ -11,7 +11,7 @@
 - name: enable repos
   template:
     src: templates/repos_template.j2
-    dest: /etc/yum/yum.repos.d/homework.repo
+    dest: /etc/yum.repos.d/homework.repo
     mode: 0644
  
 - name: install base tools and packages
