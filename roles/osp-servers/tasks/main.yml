@@ -18,6 +18,8 @@
       curl -o /tmp/openstack.pub http://www.opentlc.com/download/ansible_bootcamp/openstack_keys/openstack.pub
       cat /tmp/openstack.pub >> /home/cloud-user/.ssh/authorized_keys
   loop: "{{ osp_servers | dict2items | json_query('[].value') }}"
+  async: 900
+  poll: 0
   register: instances
 
 - name: Wait for async OSP instance creation to complete
