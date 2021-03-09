@@ -23,21 +23,24 @@
   register: instances
 
 - name: Wait for async OSP instance creation to complete
-  async_status: "jid={{ item.ansible_job_id }}"
+  async_status: "jid={{ job.ansible_job_id }}"
   register: r_wait
   until: r_wait.finished
   retries: 900
   loop: "{{ instances.results }}"
+    loop_var: job
 
 - name: Debug instances 
   debug:
-    msg: "Server is {{ item }}"
+    msg: "Server is {{ job.item.name }}"
     verbosity: 2
   loop: "{{ instances.results }}"
+    loop_var: job
 
 - name: Start OS Servers
   os_server_action:
-    server: "{{ item.server.name }}"
+    server: "{{ job.item.name }}"
     action: start
     wait: yes
   loop: "{{ instances.results }}"
+    loop_var: job
