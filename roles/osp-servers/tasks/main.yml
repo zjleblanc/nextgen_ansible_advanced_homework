@@ -28,6 +28,7 @@
   until: r_wait.finished
   retries: 900
   loop: "{{ instances.results }}"
+  loop_control:
     loop_var: job
 
 - name: Debug instances 
@@ -35,6 +36,7 @@
     msg: "Server is {{ job.item.name }}"
     verbosity: 2
   loop: "{{ instances.results }}"
+  loop_control:
     loop_var: job
 
 - name: Start OS Servers
@@ -43,4 +45,5 @@
     action: start
     wait: yes
   loop: "{{ instances.results }}"
+  loop_control:
     loop_var: job
