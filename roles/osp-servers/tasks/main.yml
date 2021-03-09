@@ -31,7 +31,7 @@
 
 - name: Debug instances 
   debug:
-    msg: "Server is {{ item.server.name }}"
+    msg: "Server is {{ item }}"
     verbosity: 2
   loop: "{{ instances.results }}"
 
