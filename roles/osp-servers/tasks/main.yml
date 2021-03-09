@@ -31,13 +31,13 @@
 
 - name: Debug instances 
   debug:
-    msg: "Server is {{ item.openstack.server.name }}"
+    msg: "Server is {{ item.server.name }}"
     verbosity: 2
   loop: "{{ instances.results }}"
 
 - name: Start OS Servers
   os_server_action:
-    server: "{{ item.openstack.server.name }}"
+    server: "{{ item.server.name }}"
     action: start
     wait: yes
   loop: "{{ instances.results }}"
