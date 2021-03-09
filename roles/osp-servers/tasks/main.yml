@@ -39,6 +39,19 @@
   loop_control:
     loop_var: job
 
+- name: Add floating IPs
+  os_floating_ip:
+    cloud: openstack
+    state: present
+    reuse: yes
+    server: "{{ job.item.name }}"
+    network: ext_network
+    wait: true
+    timeout: 200
+  loop: "{{ instances.results }}"
+  loop_control:
+    loop_var: job
+
 - name: Start OS Servers
   os_server_action:
     cloud: openstack
