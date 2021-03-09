@@ -10,7 +10,7 @@
 
 - name: enable repos
   template:
-    src: templates/repos_template.yml
+    src: templates/repos_template.j2
     dest: /etc/yum/yum.repos.d/homework.repo
     mode: 0644
  
