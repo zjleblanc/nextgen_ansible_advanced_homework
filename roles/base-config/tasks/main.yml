@@ -16,6 +16,6 @@
  
 - name: install base tools and packages
   package:
-    name: ['python','firewalld']
+    name: ['python']
     state: present
 
