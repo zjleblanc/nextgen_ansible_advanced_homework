@@ -9,5 +9,5 @@
     os_server:
       cloud: openstack
       state: absent
-      server: "{{ item.name}}"
+      name: "{{ item.name }}"
     loop: "{{ result.openstack_servers }}"
