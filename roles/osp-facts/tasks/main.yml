@@ -6,14 +6,14 @@
      register: result
    - name: Add host
      add_host:
-      name: "{{ item.public_v4 }}"
+      name: "{{ item.private_v4 }}"
       group: "{{ item.metadata.group }}"
       # ansible_ssh_private_key_file: ~/.ssh/openstack.pem
       # ansible_ssh_user: cloud-user
      with_items: "{{result.openstack_servers}}"
    - name: Add host
      add_host:
-      name: "{{ item.public_v4 }}"
+      name: "{{ item.private_v4 }}"
       group: "{{ item.metadata.deployment_name }}"
       #      ansible_ssh_private_key_file: ~/.ssh/openstack.pem
       #  ansible_ssh_user: cloud-user
@@ -21,5 +21,5 @@
 
    - name: Output Condensed Facts
      debug:
-      msg: "{{ item.name }}: {{ item.public_v4 }}"
+      msg: "{{ item.name }}: {{ item.private_v4 }}"
      with_items: "{{result.openstack_servers}}"
